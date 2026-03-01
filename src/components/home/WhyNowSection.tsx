@@ -1,54 +1,82 @@
 "use client";
-import AnimatedSection from "@/components/ui/AnimatedSection";
-import { TrendingUp, Cpu, Lightbulb } from "lucide-react";
 
-const items = [
-  {
-    icon: TrendingUp,
-    title: "Rising Demand in Mental Health",
-    description: "Global demand for mental healthcare continues to rise. Clinicians face increasing complexity, caseload pressure, and continuity challenges.",
-  },
-  {
-    icon: Cpu,
-    title: "AI Adoption in Healthcare",
-    description: "Most AI applications focus on efficiency, automation, or transcription. Few address the deeper cognitive layer: diagnostic reasoning across time.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Our Thesis",
-    description: "In the future, psychiatric diagnostic reasoning will live inside structured, longitudinal intelligence systems. PsyAIde is building that foundation today.",
-  },
-];
+import AnimatedSection from "@/components/ui/AnimatedSection";
+import { TrendingUp, Cpu, Lightbulb, ArrowUpRight } from "lucide-react";
 
 const WhyNowSection = () => {
   return (
-    <section className="py-20 lg:py-28 section-gradient">
+    <section id="why-now" className="py-24 lg:py-36 bg-white overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
-        <AnimatedSection className="max-w-3xl mx-auto text-center mb-16">
-          <p className="text-xs font-medium font-body uppercase tracking-widest text-primary mb-4">
-            Why Now
-          </p>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground leading-tight">
-            The convergence is happening
-          </h2>
+        <AnimatedSection className="max-w-4xl mx-auto text-balance mb-24">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+            <div className="max-w-2xl">
+              <h2 className="text-5xl md:text-6xl font-heading font-bold text-slate-900 tracking-tight leading-[1.1]">
+                Why Now?
+              </h2>
+              <p className="mt-8 text-xl text-slate-500 font-body leading-relaxed italic border-l-4 border-primary pl-6">
+                "Psychiatric diagnostic infrastructure has not meaningfully evolved in decades. We are at a critical inflection point."
+              </p>
+            </div>
+          </div>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {items.map((item, i) => (
-            <AnimatedSection key={i} delay={i * 0.15}>
-              <div className="glass-card rounded-xl p-8 h-full">
-                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-5">
-                  <item.icon size={22} className="text-primary" />
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
+          {/* Card 1: Rising Demand */}
+          <AnimatedSection className="md:col-span-4 h-full">
+            <div className="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100 flex flex-col h-full shadow-sm">
+              <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-primary shadow-sm mb-10">
+                <TrendingUp size={28} />
+              </div>
+              <h3 className="text-2xl font-heading font-bold text-slate-900 mb-6">Rising Demand</h3>
+              <p className="text-lg text-slate-500 font-body leading-relaxed">
+                Global demand for mental healthcare continues to rise. Clinicians face increasing complexity, caseload pressure, and continuity challenges.
+              </p>
+              <div className="mt-auto pt-10">
+                <div className="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                  Market Context <ArrowUpRight size={14} />
                 </div>
-                <h3 className="text-lg font-heading font-semibold text-foreground mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-muted-foreground font-body leading-relaxed">
-                  {item.description}
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Card 2: AI Adoption Core Layer */}
+          <AnimatedSection className="md:col-span-4 h-full" delay={0.2}>
+            <div className="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100 flex flex-col h-full shadow-sm">
+              <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-primary shadow-sm mb-10">
+                <Cpu size={28} />
+              </div>
+              <h3 className="text-2xl font-heading font-bold text-slate-900 mb-6">AI Core Layer</h3>
+              <p className="text-lg text-slate-500 font-body leading-relaxed">
+                Most AI healthcare apps focus on transcription. Few address the deeper cognitive layer of medicine: diagnostic reasoning across time.
+              </p>
+              <div className="mt-auto pt-10">
+                <div className="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                  Technical Void <ArrowUpRight size={14} />
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Card 3: Our Thesis (The Highlight) */}
+          <AnimatedSection className="md:col-span-4" delay={0.4}>
+            <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 flex flex-col h-full relative overflow-hidden shadow-xl shadow-slate-200/50">
+              <div className="inline-flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-[0.2em] mb-8">
+                <Lightbulb size={16} fill="currentColor" />
+                The PsyAIde Thesis
+              </div>
+              <p className="text-2xl md:text-3xl font-heading font-bold text-slate-900 leading-[1.2] mb-10">
+                Foundational Reasoning &gt; Documentation Scribes.
+              </p>
+              <p className="text-lg text-slate-600 font-body leading-relaxed">
+                In the future, psychiatric diagnostic reasoning will not live solely inside static notes. It will live inside structured, longitudinal intelligence systems.
+              </p>
+              <div className="mt-auto pt-10 border-t border-slate-100 w-full mt-10">
+                <p className="text-lg text-slate-900 font-heading font-bold">
+                  PsyAIde is building that foundation today.
                 </p>
               </div>
-            </AnimatedSection>
-          ))}
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>

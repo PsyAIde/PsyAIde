@@ -10,8 +10,13 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-    title: "PsyAIde - Structured Intelligence for Mental Health",
-    description: "Building the AI infrastructure layer for psychiatric diagnostic reasoning.",
+    title: "PsyAIde | Clinical Reasoning Infrastructure for Psychiatry",
+    description: "Transforming fragmented psychiatric notes into structured, longitudinal diagnostic intelligence. Built for clinicians, powered by evidence-based AI.",
+    icons: {
+        icon: "/favicon.ico",
+        shortcut: "/favicon.png",
+        apple: "/apple-touch-icon.png",
+    },
 };
 
 export default function RootLayout({

@@ -1,51 +1,51 @@
 "use client";
+
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import { AlertTriangle } from "lucide-react";
+import Image from "next/image";
+import problemImg from "@/assets/problem_data.png";
 
 const ProblemSection = () => {
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section id="problem" className="py-24 lg:py-32 bg-white overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
-        <AnimatedSection className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-destructive/10 text-destructive text-xs font-medium font-body mb-6">
-            <AlertTriangle size={14} />
-            The Problem
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+          {/* Left: Visual Evidence */}
+          <div className="flex-1 w-full order-2 lg:order-1">
+            <AnimatedSection className="relative">
+              <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-white border-2">
+                <Image
+                  src={problemImg}
+                  alt="Problem of fragmented medical data"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/60 to-transparent" />
+              </div>
+            </AnimatedSection>
           </div>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground leading-tight">
-            Psychiatric diagnosis is broken by design
-          </h2>
-        </AnimatedSection>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {[
-            {
-              text: "Psychiatric diagnosis unfolds over time. It depends on recognizing patterns across visits, symptom evolution, and subtle changes in functioning.",
-            },
-            {
-              text: "Yet most of this information lives inside disconnected, unstructured notes. Clinicians must manually reconstruct diagnostic reasoning across providers and time.",
-            },
-            {
-              text: "Important signals can be difficult to track. Continuity relies on memory rather than infrastructure.",
-            },
-            {
-              text: "Most AI tools in mental health focus on documentation efficiency. None address the core problem: structured, longitudinal diagnostic reasoning.",
-            },
-          ].map((item, i) => (
-            <AnimatedSection key={i} delay={i * 0.1}>
-              <div className="glass-card rounded-xl p-6 h-full">
-                <p className="text-muted-foreground font-body leading-relaxed text-sm">
-                  {item.text}
+          {/* Right: Content */}
+          <div className="flex-1 order-1 lg:order-2">
+            <AnimatedSection>
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 leading-tight mb-10">
+                The Problem
+              </h2>
+              <div className="space-y-6 text-lg md:text-xl text-slate-600 font-body leading-relaxed">
+                <p>
+                  Psychiatric diagnosis unfolds over time. It depends on recognizing patterns across visits, symptom evolution, and subtle changes in functioning.
+                </p>
+                <p>
+                  Yet most of this information lives inside disconnected, unstructured notes. Clinicians must manually reconstruct diagnostic reasoning across providers and time, often under significant pressure. Important signals can be difficult to track. Continuity relies on memory rather than infrastructure.
+                </p>
+                <p>
+                  Most AI tools in mental health focus on documentation efficiency. None address the core problem: structured, longitudinal diagnostic reasoning.
+                </p>
+                <p className="font-bold text-slate-900">
+                  Mental healthcare deserves better systems.
                 </p>
               </div>
             </AnimatedSection>
-          ))}
+          </div>
         </div>
-
-        <AnimatedSection delay={0.4} className="mt-10 text-center">
-          <p className="text-lg font-heading font-semibold text-primary">
-            Mental healthcare deserves better systems.
-          </p>
-        </AnimatedSection>
       </div>
     </section>
   );

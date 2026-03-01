@@ -1,57 +1,50 @@
 "use client";
+
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 const faqs = [
   {
-    q: "Is PsyAIde a documentation tool?",
-    a: "No. PsyAIde does not automate note writing. It structures diagnostic reasoning across time.",
+    question: "Is PsyAIde a documentation tool?",
+    answer: "No. PsyAIde does not automate note writing. It structures diagnostic reasoning across time.",
   },
   {
-    q: "Does PsyAIde replace clinicians?",
-    a: "No. PsyAIde augments clinical judgment. It does not automate or override it.",
+    question: "Does PsyAIde replace clinicians?",
+    answer: "No. PsyAIde augments clinical judgment. It does not automate or override it.",
   },
   {
-    q: "How is data handled?",
-    a: "We are designing PsyAIde with privacy-first architecture and responsible AI principles at its core.",
+    question: "How is data handled?",
+    answer: "We are designing PsyAIde with privacy-first architecture and responsible AI principles at its core.",
   },
   {
-    q: "Who is PsyAIde for?",
-    a: "Forward-thinking psychiatric practices and mental health organizations seeking deeper diagnostic clarity and longitudinal insight.",
+    question: "Who is PsyAIde for?",
+    answer: "Forward-thinking psychiatric practices and mental health organizations seeking deeper diagnostic clarity and longitudinal insight.",
   },
   {
-    q: "What stage are you in?",
-    a: "We are completing our MVP and onboarding early pilot partners.",
+    question: "What stage are you in?",
+    answer: "We are completing our MVP and onboarding early pilot partners.",
   },
 ];
 
 const FAQSection = () => {
   return (
-    <section className="py-20 lg:py-28 bg-background">
-      <div className="container mx-auto px-4 lg:px-8">
-        <AnimatedSection className="max-w-2xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-xs font-medium font-body uppercase tracking-widest text-primary mb-4">
-              FAQ
-            </p>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-              Frequently Asked Questions
-            </h2>
-          </div>
+    <section id="faq" className="py-24 lg:py-36 bg-slate-50 overflow-hidden relative">
+      <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
+        <AnimatedSection className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 leading-tight">
+            FAQ section
+          </h2>
+        </AnimatedSection>
 
+        <AnimatedSection className="bg-white p-12 rounded-[3.5rem] shadow-2xl shadow-slate-200/50">
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`item-${i}`}>
-                <AccordionTrigger className="text-left text-sm font-body font-medium text-foreground">
-                  {faq.q}
+              <AccordionItem key={i} value={`faq-${i}`} className="border-b last:border-0 border-slate-100">
+                <AccordionTrigger className="text-xl font-heading font-bold text-slate-900 text-left hover:no-underline hover:text-primary transition-colors py-8">
+                  {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-sm font-body text-muted-foreground leading-relaxed">
-                  {faq.a}
+                <AccordionContent className="text-lg text-slate-500 font-body leading-relaxed pb-8">
+                  {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}

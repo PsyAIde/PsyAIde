@@ -31,14 +31,6 @@ export default function Contact() {
                         <ContactForm />
                     </AnimatedSection>
 
-                    <AnimatedSection delay={0.2} className="mt-12 text-center">
-                        <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                            <Mail size={16} />
-                            <a href="mailto:hello@psyaide.ai" className="text-sm font-body hover:text-primary transition-colors">
-                                hello@psyaide.ai
-                            </a>
-                        </div>
-                    </AnimatedSection>
                 </div>
             </section>
         </>
