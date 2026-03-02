@@ -1,12 +1,12 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
+import clientPromise from "@/lib/db";
 import { z } from "zod";
-import { Resend } from "resend";
-
-const resend = process.env.RESEND_API_KEY
-    ? new Resend(process.env.RESEND_API_KEY)
-    : null;
+import {
+    sendEmail,
+    generateContactConfirmationEmailHTML,
+    generateContactNotificationEmailHTML
+} from "@/lib/mail";
 
 const contactSchema = z.object({
     name: z.string().min(1, "Name is required").max(100),
@@ -17,45 +17,48 @@ const contactSchema = z.object({
 export async function submitContactForm(formData: FormData) {
     try {
         const rawData = {
-            name: formData.get("name"),
-            email: formData.get("email"),
-            message: formData.get("message"),
+            name: formData.get("name") as string,
+            email: formData.get("email") as string,
+            message: formData.get("message") as string,
         };
 
         const validatedData = contactSchema.parse(rawData);
 
-        // 1. Save to Database (MongoDB via Prisma)
-        const newMessage = await prisma.contactMessage.create({
-            data: {
-                name: validatedData.name,
-                email: validatedData.email,
-                message: validatedData.message,
-            },
+        // 1. Save to Database (MongoDB directly)
+        const client = await clientPromise;
+        const db = client.db();
+        await db.collection("ContactMessage").insertOne({
+            name: validatedData.name,
+            email: validatedData.email,
+            message: validatedData.message,
+            createdAt: new Date(),
         });
 
-        // 2. Send Email if API Key is configured
-        if (resend) {
-            try {
-                await resend.emails.send({
-                    from: "PsyAIde Website <onboarding@resend.dev>",
-                    to: "hello@psyaide.ai",
+        // 2. Send Emails via Nodemailer
+        try {
+            // Send confirmation to the user
+            await sendEmail({
+                to: validatedData.email,
+                subject: "We've received your message - PsyAIde",
+                html: generateContactConfirmationEmailHTML(validatedData.name, validatedData.message),
+            });
+
+            // Send notification to the admin (using APP_EMAIL as the destination)
+            const adminEmail = process.env.APP_EMAIL;
+            if (adminEmail) {
+                await sendEmail({
+                    to: adminEmail,
                     subject: `New Contact Form Submission: ${validatedData.name}`,
-                    html: `
-            <h3>New Contact Message</h3>
-            <p><strong>Name:</strong> ${validatedData.name}</p>
-            <p><strong>Email:</strong> ${validatedData.email}</p>
-            <p><strong>Message:</strong></p>
-            <p>${validatedData.message.replace(/\n/g, "<br/>")}</p>
-            <hr/>
-            <p><em>Submitted on: ${new Date().toLocaleString()}</em></p>
-          `,
+                    html: generateContactNotificationEmailHTML(
+                        validatedData.name,
+                        validatedData.email,
+                        validatedData.message
+                    ),
                 });
-            } catch (emailError) {
-                // Log email error but don't fail the entire request since data is saved
-                console.error("Failed to send email:", emailError);
             }
-        } else {
-            console.warn("RESEND_API_KEY not found. Email notification skipped.");
+        } catch (emailError) {
+            // Log email error but don't fail the entire request since data is saved
+            console.error("Failed to send email:", emailError);
         }
 
         return {
