@@ -56,20 +56,23 @@ const ProductSection = () => {
             </p>
           </AnimatedSection>
 
-          <AnimatedSection className="bg-slate-900 p-10 rounded-[2rem] shadow-xl shadow-slate-900/20 text-white lg:col-span-2">
-            <div className="flex flex-col md:flex-row gap-10 items-center h-full">
+          <AnimatedSection className="navy-gradient p-10 rounded-[2rem] shadow-xl shadow-sky-900/20 border border-sky-500/10 text-white lg:col-span-2 relative overflow-hidden">
+            {/* Subtle glow effect behind the card */}
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-sky-500/10 rounded-full blur-[100px] pointer-events-none" />
+
+            <div className="flex flex-col md:flex-row gap-10 items-center h-full relative z-10">
               <div className="flex-1">
-                <XCircle className="h-12 w-12 text-primary mb-6" />
+                <XCircle className="h-12 w-12 text-sky-400 mb-6" />
                 <h3 className="text-2xl font-heading font-bold mb-4">What We Are Not</h3>
-                <ul className="space-y-4 text-slate-400 font-body text-lg font-medium">
+                <ul className="space-y-4 text-slate-300 font-body text-lg font-medium">
                   <li>• Not a documentation scribe</li>
                   <li>• Not a billing optimization tool</li>
                   <li>• Not replacing clinical judgment</li>
                 </ul>
               </div>
-              <div className="w-full md:w-[1px] h-[1px] md:h-full bg-slate-800" />
+              <div className="w-full md:w-[1px] h-[1px] md:h-full bg-white/10" />
               <div className="flex-1 text-center">
-                <h4 className="text-3xl font-heading font-bold text-white mb-2 underline decoration-primary underline-offset-8 decoration-4">Our Mission</h4>
+                <h4 className="text-3xl font-heading font-bold text-white mb-2 underline decoration-sky-400 underline-offset-8 decoration-4">Our Mission</h4>
                 <p className="text-xl text-slate-400 font-body">We are building reasoning infrastructure.</p>
               </div>
             </div>

@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ================================
+   BASE THEME VARIABLES
+================================ */
 @layer base {
   :root {
     --background: 210 20% 98%;
@@ -24,7 +27,8 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 199 89% 48%; /* Medical Blue */
+    /* Medical Blue Accent */
+    --accent: 199 89% 48%;
     --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84.2% 60.2%;
@@ -36,11 +40,13 @@
 
     --radius: 1rem;
 
-    /* Custom tokens */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
   }
 
+  /* ================================
+     DARK MODE
+  ================================= */
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -60,7 +66,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 199 89% 48%;
     --accent-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
@@ -69,50 +75,81 @@
   }
 }
 
+/* ================================
+   GLOBAL ELEMENT STYLES
+================================ */
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
     @apply tracking-tight font-semibold;
   }
 }
 
+/* ================================
+   CUSTOM UTILITIES
+================================ */
 @layer utilities {
+
+  /* Glassmorphism */
   .glass {
     @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg;
   }
-  
+
   .glass-dark {
     @apply bg-black/40 backdrop-blur-md border border-white/10 shadow-lg;
   }
 
+  /* Gradient Text */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#0EA5E9];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-sky-500;
   }
 
+  /* Hero Background Gradient (FIXED) */
   .hero-gradient {
-    @apply bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-100/80 via-indigo-50/50 to-white;
+    background: radial-gradient(ellipse at top,
+        hsl(var(--accent) / 0.15),
+        hsl(var(--primary) / 0.05),
+        hsl(var(--background)));
   }
 
+  /* Deep Navy Gradient */
   .navy-gradient {
-    @apply bg-gradient-to-br from-[#020617] via-[#0f172a] to-[#1e293b];
+    background: linear-gradient(to bottom right,
+        #020617,
+        #0f172a,
+        #1e293b);
   }
 
+  /* Floating Animation */
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
   }
 }
-
