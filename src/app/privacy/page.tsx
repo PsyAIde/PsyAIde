@@ -14,7 +14,7 @@ export default function Privacy() {
                     <AnimatedSection>
                         <p className="text-xs font-medium font-body uppercase tracking-widest text-primary mb-4">Legal</p>
                         <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground leading-tight">
-                            Privacy Policy
+                            Privacy <span className="text-gradient">Policy</span>
                         </h1>
                         <p className="mt-6 text-lg text-muted-foreground font-body leading-relaxed">
                             Your privacy is fundamental to our mission. This policy describes how PsyAIde handles information.

@@ -52,7 +52,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/10 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs opacity-50 font-body">
-            © {new Date().getFullYear()} PsyAIde. All rights reserved.
+            © {new Date().getFullYear()} PsyAIde, Inc. All rights reserved.
           </p>
           <p className="text-xs opacity-50 font-body italic">
             Longitudinal Insight for Psychiatric Care

@@ -16,7 +16,7 @@ export default function Contact() {
                     <AnimatedSection>
                         <p className="text-xs font-medium font-body uppercase tracking-widest text-primary mb-4">Contact</p>
                         <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground leading-tight">
-                            Get in Touch
+                            Get <span className="text-gradient">in Touch</span>
                         </h1>
                         <p className="mt-6 text-lg text-muted-foreground font-body leading-relaxed">
                             Whether you're a clinician, investor, or healthcare operator — we'd love to hear from you.

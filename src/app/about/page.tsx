@@ -14,10 +14,9 @@ export default function About() {
             <section className="py-24 lg:py-32">
                 <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
                     <AnimatedSection delay={0.1}>
-
-                        {/* Main Heading */}
-                        <h1 className="text-5xl md:text-6xl font-heading font-bold leading-tight mb-10">
-                            Rebuilding <span className="text-clinical-blue italic font-serif">Clinical</span> Intelligence.
+                        {/* <p className="text-xs font-medium font-body uppercase tracking-widest text-primary mb-4">Mission</p> */}
+                        <h1 className="text-3xl md:text-4xl lg:text-6xl font-heading font-bold text-foreground leading-tight">
+                            Rebuilding <span className="text-gradient">Clinical Intelligence</span>
                         </h1>
 
                         {/* Narrative Paragraphs */}

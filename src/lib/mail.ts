@@ -140,8 +140,54 @@ export function generateContactConfirmationEmailHTML(
                 <p>Warm regards,<br>The PsyAIde Team</p>
             </div>
             <div class="footer">
-                <p>&copy; ${new Date().getFullYear()} PsyAIde. All rights reserved.</p>
+                <p>&copy; ${new Date().getFullYear()} PsyAIde, Inc. All rights reserved.</p>
                 <p>This is an automated confirmation email. Please do not reply directly.</p>
+            </div>
+        </div>
+    </body>
+    </html>
+  `;
+}
+
+/**
+ * Generate pilot program confirmation email HTML template (sent to user)
+ */
+export function generatePilotConfirmationEmailHTML(
+  userName: string
+): string {
+  return `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Joining the PsyAIde Pilot Program</title>
+        <style>
+            body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f7f9; }
+            .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+            .header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 40px 20px; text-align: center; color: white; }
+            .header h1 { margin: 0; font-size: 24px; font-weight: 600; }
+            .content { padding: 40px; }
+            .content p { font-size: 16px; margin-bottom: 20px; color: #444; }
+            .footer { background: #f8fafc; padding: 20px; text-align: center; border-top: 1px solid #eee; }
+            .footer p { font-size: 12px; color: #999; margin: 0; }
+            .brand { font-weight: bold; color: #0f172a; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>Pilot Program Application Received</h1>
+            </div>
+            <div class="content">
+                <p>Hello Dr. <strong>${userName}</strong>,</p>
+                <p>Thank you for your interest in the <span class="brand">PsyAIde</span> Pilot Program. We've received your application and are excited about the possibility of working with you.</p>
+                <p>Our pilot is limited to a select group of psychiatrists to ensure we provide the highest level of support and incorporate direct clinical feedback into our diagnostic engine.</p>
+                <p>A member of our clinical strategy team will reach out to you within the next 48 hours to discuss the next steps.</p>
+                <p>Best regards,<br>The PsyAIde Clinical Team</p>
+            </div>
+            <div class="footer">
+                <p>&copy; ${new Date().getFullYear()} PsyAIde, Inc. All rights reserved.</p>
             </div>
         </div>
     </body>
@@ -211,6 +257,79 @@ export function generateContactNotificationEmailHTML(
             </div>
             <div class="footer">
                 <p>You're receiving this message from the PsyAIde platform</p>
+            </div>
+        </div>
+    </body>
+    </html>
+  `;
+}
+
+/**
+ * Generate pilot application notification email HTML template (sent to admin)
+ */
+export function generatePilotNotificationEmailHTML(
+  name: string,
+  email: string,
+  practiceName: string,
+  note: string
+): string {
+  return `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>New Pilot Application - PsyAIde</title>
+        <style>
+            body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f7f9; }
+            .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+            .header { background: #0f172a; padding: 20px; text-align: center; color: white; }
+            .header h2 { margin: 0; font-weight: 400; font-size: 18px; color: #cbd5e1; text-transform: uppercase; letter-spacing: 2px; }
+            .content { padding: 40px; }
+            .info-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+            .info-table td { padding: 12px 0; border-bottom: 1px solid #eee; }
+            .info-table td.label { width: 120px; font-weight: bold; color: #64748b; font-size: 12px; text-transform: uppercase; }
+            .info-table td.value { color: #0f172a; font-size: 15px; }
+            .note-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; color: #334155; white-space: pre-wrap; font-size: 14px; }
+            .footer { background: #f8fafc; padding: 20px; text-align: center; font-size: 12px; color: #94a3b8; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h2>New Pilot Application Submission</h2>
+            </div>
+            <div class="content">
+                <table class="info-table">
+                    <tr>
+                        <td class="label">Applicant</td>
+                        <td class="value">${name}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Email</td>
+                        <td class="value"><a href="mailto:${email}">${email}</a></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Practice</td>
+                        <td class="value">${practiceName}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Submitted</td>
+                        <td class="value">${new Date().toLocaleString()}</td>
+                    </tr>
+                </table>
+                
+                <h3 style="font-size: 12px; text-transform: uppercase; color: #64748b; margin-bottom: 10px;">Note:</h3>
+                <div class="note-box">${note}</div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="mailto:${email}" style="display: inline-block; background: #0f172a; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                        Respond to Applicant
+                    </a>
+                </div>
+            </div>
+            <div class="footer">
+                <p>This is an automated notification from PsyAIde</p>
             </div>
         </div>
     </body>

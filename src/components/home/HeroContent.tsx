@@ -35,7 +35,7 @@ const HeroContent = () => {
         className="mt-12 flex flex-col sm:flex-row items-center gap-5"
       >
         <Link
-          href="/contact"
+          href="/pilot"
           className="w-full sm:w-auto inline-flex items-center justify-center h-12 px-10 rounded-full bg-primary text-primary-foreground font-bold transition-all hover:shadow hover:shadow-primary/30 hover:-translate-y-1 active:scale-95 gap-3"
         >
           Join the Pilot

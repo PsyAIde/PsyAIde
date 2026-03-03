@@ -56,7 +56,7 @@ const Navbar = () => {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href="/pilot"
             className="inline-flex items-center justify-center h-10 px-6 rounded-full bg-primary text-primary-foreground text-sm font-semibold transition-all hover:shadow-lg hover:shadow-primary/20 hover:scale-105 active:scale-95"
           >
             Join the Pilot
@@ -97,7 +97,7 @@ const Navbar = () => {
                 </Link>
               ))}
               <Link
-                href="/contact"
+                href="/pilot"
                 onClick={() => setIsOpen(false)}
                 className="inline-flex items-center justify-center h-12 px-6 rounded-xl bg-accent text-accent-foreground font-bold shadow-lg shadow-accent/20"
               >
