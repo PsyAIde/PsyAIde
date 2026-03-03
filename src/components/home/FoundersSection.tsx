@@ -89,62 +89,75 @@ const FoundersSection = () => {
           </h2>
         </AnimatedSection>
 
-        <div className="flex flex-col gap-24 max-w-7xl mx-auto">
+        <div className="flex flex-col gap-36 max-w-6xl mx-auto">
           {founders.map((f, i) => (
             <AnimatedSection key={i} delay={i * 0.2}>
-              <div className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-20 items-stretch`}>
-                {/* Left: Content and Highlights */}
-                <div className="flex-1 space-y-8 flex flex-col justify-center">
+              <div className="space-y-12">
+                {/* 1. Header Row: Name, Designation & Bio */}
+                <div className="space-y-6">
                   <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <h3 className="text-3xl md:text-4xl font-heading font-bold text-slate-900">
+                    <div className="flex items-center gap-4">
+                      <h3 className="text-[32px] md:text-[40px] font-heading font-bold text-slate-900 tracking-tight">
                         {f.name}
                       </h3>
-                      <div className="text-green-500">
-                        <CheckCircle2 size={24} fill="currentColor" className="text-white ring-2 ring-green-500 rounded-full" />
+                      <div className="w-5 h-5 rounded-full border-2 border-sky-300/30" />
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <div className="text-lg font-heading font-bold text-slate-800">{f.role}</div>
+                      <div className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.3em] font-body">
+                        {f.focus}
                       </div>
                     </div>
-                    <div className="flex flex-col gap-1">
-                      <div className="text-lg font-heading font-bold text-primary">{f.role}</div>
-                      <div className="text-sm font-semibold text-slate-500 uppercase tracking-wider">{f.focus}</div>
-                    </div>
-                    <p className="text-lg text-slate-600 font-body leading-relaxed border-l-2 border-slate-200 pl-6 italic quote-accent">
-                      "{f.bio}"
-                    </p>
-                  </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                    <blockquote className="mt-5 border-l-2 border-sky-200 pl-6 italic text-slate-500 text-lg font-body leading-relaxed max-w-4xl">
+                      "{f.bio}"
+                    </blockquote>
+                  </div>
+                </div>
+
+                {/* 2. Content Layout: 2x2 Grid and Large Image */}
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-10 items-stretch">
+
+                  {/* Cards Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {f.details.map((detail, j) => (
-                      <div key={j} className="flex flex-col gap-3 p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all group h-full">
-                        <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                          <detail.icon size={20} />
+                      <div key={j} className="p-8 rounded-3xl bg-white border border-slate-50 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.03)] hover:shadow-lg transition-all duration-500 group">
+                        <div className="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-clinical-blue group-hover:bg-slate-900 group-hover:text-white transition-all duration-300 mb-6">
+                          <detail.icon size={18} strokeWidth={2.5} />
                         </div>
-                        <h4 className="text-[15px] font-heading font-bold text-slate-900 leading-snug">
-                          {detail.title}
-                        </h4>
-                        <p className="text-[13px] text-slate-500 leading-relaxed font-body">
-                          {detail.description}
-                        </p>
+                        <div className="space-y-3">
+                          <h4 className="text-[18px] font-serif font-bold text-slate-900 leading-snug">
+                            {detail.title}
+                          </h4>
+                          <p className="text-[15px] text-slate-500 leading-relaxed font-body">
+                            {detail.description}
+                          </p>
+                        </div>
                       </div>
                     ))}
                   </div>
-                </div>
 
-                {/* Right: Large Portrait */}
-                <div className="lg:w-2/5 min-h-[500px]">
-                  <div className="relative w-full h-full min-h-[500px] lg:min-h-full rounded-[2.5rem] overflow-hidden shadow-2xl border-white border-[8px] group">
-                    <Image
-                      src={f.image}
-                      alt={`${f.name} — ${f.role}`}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 1024px) 100vw, 40vw"
-                      priority={i === 0}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-60" />
+                  {/* Large Profile Image */}
+                  <div className="flex justify-center">
+                    <div className="relative w-full h-full min-h-[450px] rounded-[2.5rem] overflow-hidden bg-slate-50 border border-slate-100 shadow-sm group">
+                      <Image
+                        src={f.image}
+                        alt={`${f.name} — ${f.role}`}
+                        fill
+                        className={`object-cover ${i === 1 ? 'object-center' : 'object-top'} transition-transform duration-1000 group-hover:scale-105`}
+                        sizes="(max-width: 1024px) 100vw, 340px"
+                        priority={i === 0}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
+
+              {/* Founder Separator */}
+              {/* {i < founders.length - 1 && (
+                <div className="mt-32 mb-32 border-t border-slate-100/80 max-w-full" />
+              )} */}
             </AnimatedSection>
           ))}
         </div>

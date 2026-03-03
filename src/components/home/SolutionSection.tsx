@@ -3,7 +3,7 @@
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { Brain, Clock, UserCheck } from "lucide-react";
 import Image from "next/image";
-import solutionImg from "@/assets/solution_intelligence.png";
+import solutionTimeline from "@/assets/solution_timeline.png";
 
 const principles = [
   {
@@ -26,17 +26,19 @@ const principles = [
 const SolutionSection = () => {
   return (
     <section id="solution" className="py-24 lg:py-36 bg-slate-900 text-white overflow-hidden relative">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-sky-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[800px] h-[800px] bg-sky-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-          {/* Right Content */}
-          <div className="flex-1 max-w-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] items-center gap-16 lg:gap-24">
+
+          {/* Left Content (60-70% space) */}
+          <div className="space-y-12 flex flex-col justify-center">
             <AnimatedSection>
-              <h2 className="text-4xl md:text-5xl font-heading font-bold leading-tight mb-8">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight mb-8 text-balance">
                 The Solution
               </h2>
-              <div className="space-y-6 text-xl text-slate-400 font-body leading-relaxed mb-12">
+
+              <div className="space-y-6 text-[18px] text-slate-400 font-body leading-relaxed max-w-2xl mb-12">
                 <p>
                   PsyAIde is building the AI infrastructure layer for psychiatric diagnostic reasoning.
                 </p>
@@ -48,15 +50,20 @@ const SolutionSection = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12">
+              {/* Principles List (Vertical) */}
+              <div className="space-y-8 max-w-2xl">
                 {principles.map((item, i) => (
-                  <div key={i} className="flex flex-col gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-sky-500/10 flex items-center justify-center text-sky-400 border border-sky-500/20">
-                      <item.icon size={24} />
+                  <div key={i} className="flex items-start gap-6 group">
+                    <div className="w-12 h-12 flex-shrink-0 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-sky-400 transition-all duration-300 group-hover:bg-slate-800 group-hover:border-sky-500/30">
+                      <item.icon size={22} strokeWidth={2} />
                     </div>
-                    <div>
-                      <h3 className="text-lg font-heading font-bold mb-2">{item.title}</h3>
-                      <p className="text-sm text-slate-300 leading-relaxed font-body">{item.description}</p>
+                    <div className="space-y-1.5 pt-1">
+                      <h3 className="text-[20px] font-serif font-bold text-white transition-colors group-hover:text-sky-400">
+                        {item.title}
+                      </h3>
+                      <p className="text-[16px] text-slate-400 leading-relaxed font-body">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -64,16 +71,21 @@ const SolutionSection = () => {
             </AnimatedSection>
           </div>
 
-          {/* Right: Immersive Visual */}
-          <div className="flex-1 w-full">
-            <AnimatedSection className="relative">
-              <div className="relative rounded-[3rem] overflow-hidden shadow-[0_0_80px_rgba(14,165,233,0.15)] border border-white/10 group">
-                <Image
-                  src={solutionImg}
-                  alt="Futuristic clinical diagnostic intelligence"
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
+          {/* Right Visual (30-40% space) */}
+          <div className="w-full h-full">
+            <AnimatedSection delay={0.2} className="h-full">
+              <div className="relative h-full rounded-[3.5rem] p-4 bg-white/5 border border-white/10 shadow-[0_0_80px_rgba(14,165,233,0.15)] overflow-hidden">
+                <div className="relative h-full rounded-[2.5rem] overflow-hidden group">
+                  <Image
+                    src={solutionTimeline}
+                    alt="PsyAIde Diagnostic Intelligence Timeline"
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    priority
+                  />
+                  {/* Subtle glassmorphism overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-40" />
+                </div>
               </div>
             </AnimatedSection>
           </div>

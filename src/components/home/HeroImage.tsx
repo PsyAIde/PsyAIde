@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import heroClinical from "@/assets/hero-clinical.jpg";
+import heroBrain from "@/assets/hero-brain.png";
 
 const HeroImage = () => {
   return (
@@ -10,19 +10,19 @@ const HeroImage = () => {
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="flex-1 max-w-[616px] mx-auto relative"
+      className="flex-1 max-w-[616px] mx-auto relative group"
     >
       <div className="relative z-10">
-        {/* square frame, slightly smaller with thinner border */}
-        <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] border-[6px] border-white aspect-square max-w-[504px] mx-auto">
+        {/* Floating Neural Graphic */}
+        <div className="relative rounded-[3rem] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.15)] border-[8px] border-white/80 aspect-square max-w-[520px] mx-auto backdrop-blur-sm transition-transform duration-1000 group-hover:scale-[1.02]">
           <Image
-            src={heroClinical}
-            alt="Modern psychiatric clinical interface"
+            src={heroBrain}
+            alt="PsyAIde Neural Intelligence Network"
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/5 to-transparent pointer-events-none" />
         </div>
       </div>
 
