@@ -1,3 +1,4 @@
+// src\app\actions\contact.ts
 "use server";
 
 import clientPromise from "@/lib/db";
@@ -44,7 +45,7 @@ export async function submitContactForm(formData: FormData) {
             });
 
             // Send notification to the admin (using APP_EMAIL as the destination)
-            const adminEmail = process.env.APP_EMAIL;
+            const adminEmail = process.env.ADMIN_EMAIL;
             if (adminEmail) {
                 await sendEmail({
                     to: adminEmail,

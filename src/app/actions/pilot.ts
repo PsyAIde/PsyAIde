@@ -1,3 +1,4 @@
+// src\app\actions\pilot.ts
 "use server";
 
 import clientPromise from "@/lib/db";
@@ -47,7 +48,7 @@ export async function submitPilotForm(formData: FormData) {
             });
 
             // Send notification to the admin
-            const adminEmail = process.env.APP_EMAIL;
+            const adminEmail = process.env.ADMIN_EMAIL;
             if (adminEmail) {
                 await sendEmail({
                     to: adminEmail,

@@ -1,3 +1,4 @@
+// src\lib\mail.ts
 import nodemailer from 'nodemailer';
 
 interface EmailAttachment {
