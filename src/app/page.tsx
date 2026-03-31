@@ -2,6 +2,7 @@ import HeroSection from "@/components/home/HeroSection";
 import ProblemSection from "@/components/home/ProblemSection";
 import SolutionSection from "@/components/home/SolutionSection";
 import ProductSection from "@/components/home/ProductSection";
+import PitchVideoSection from "@/components/home/PitchVideoSection";
 import FAQSection from "@/components/home/FAQSection";
 import InvestorsSection from "@/components/home/InvestorsSection";
 
@@ -12,6 +13,7 @@ export default function Home() {
             <ProblemSection />
             <SolutionSection />
             <ProductSection />
+            <PitchVideoSection />
             <InvestorsSection />
             <FAQSection />
         </div>
